@@ -1,0 +1,15 @@
+{
+  "name": "ssh-auth",
+  "version": "0.0.1",
+  "description": "SSH Auth package",
+  "author": {
+    "name": "Jacopo Daeli <jacopo.daeli@gmail.com>"
+  },
+  "clever": "0.0.x",
+  "dependencies": {},
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  }
+}
