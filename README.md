@@ -1,2 +1,2 @@
 # clever-ssh-auth
-SSH authorisation module for CLEVER.
+SSH authorisation package for CLEVER.

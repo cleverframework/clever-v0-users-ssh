@@ -1,0 +1,90 @@
+extends ../../../system/views/site/layout/site
+
+block vars
+  - var bodyClass = 'profile'
+  
+block content
+  div(class="profile-template")
+    .settings-container
+      .row
+        .col-sm-3
+          ul.nav.nav-pills.nav-stacked
+            each el in userMenu.elements
+              li(class=(el.active === true) ? 'active' : '')
+                a(href='#{el.ref}') #{el.name}
+                if el.sub 
+                  ul.cool
+                    each subel in el.sub.elements
+                      li(class=(subel.active === true) ? 'active' : '')
+                        a(href='#{subel.ref}') #{subel.name}
+            
+              
+        .col-sm-9
+          .row
+            b Need help?
+            | &nbsp;Check out our&nbsp;
+            a guide to generating SSH keys
+            | &nbsp;or&nbsp;
+            a troubleshoot common SSH Problems
+            | .
+            br
+            br
+            .panel.panel-default
+              .panel-heading 
+                .row
+                  .col-xs-6
+                    h3.panel-title SSH Keys
+                  .col-xs-6
+                    button#showAddSSHKeyForm.btn.btn-default.btn-xs.pull-right 
+                      | Add SSH Key
+              |             
+              .panel-body(style="border-bottom:1px solid #ddd; color: #666")
+                | This is a list of SSH keys associated with your account. Remove any keys that you do not recognize.
+              .panel-body
+                if keys.length == 0
+                  span(style="color: #666") No keys added yet.
+                for key in keys 
+                  .row                  
+                    .col-xs-10
+                      i.fa.fa-key.fa-2x.pull-left
+                      b #{key.title}
+                      br
+                      span(style="font-size:11px;") #{key.fingerprint}
+                    .col-xs-2
+                      a.btn.btn-danger.pull-right.deleteSSHKey(data-id="#{key._id}")
+                        i.fa.fa-remove
+                      
+          .row
+            #addSSHKeyPanel.panel.panel-default.hidden
+              .panel-heading 
+                .row
+                  .col-xs-12
+                    h3.panel-title Add an SSH key
+              |             
+              .panel-body
+                form#addSSHKey(method="POST", action="/settings/ssh", autocomplete="off")
+                  .form-group
+                      label(for="inputSSHKeyTitle") Title
+                      |     
+                      input#inputSSHKeyTitle.form-control(type="text", name="title", value="", placeholder="")
+                    |  
+                  .form-group
+                      label(for="inputSSHKeyData") Key
+                      |     
+                      textarea#inputSSHKeyData.form-control(name="data", rows="12")
+                  input(type="hidden", name="_csrf", value="#{csrfToken}")
+                  |   
+                  button#addSSHKeyBtn.btn.btn-success(type="submit") Add
+                  div#addSSHKeyError(class="alert alert-danger hidden", role="alert", style="margin-top:20px")
+                    b
+                      |	Ops! 
+                    span.message
+                      | No Errors
+                            
+
+block appendcss
+  link(rel="stylesheet", href="/public/users/site/index.css")
+
+block appendjs
+  script window.csrf = '#{csrfToken}';
+  script(src="/public/users-ssh/site/index.js")

@@ -1,10 +1,10 @@
 {
-  "name": "ssh-auth",
+  "name": "users-ssh",
   "version": "0.0.1",
   "authors": [
     "JacopoDaeli <jacopo.daeli@gmail.com>"
   ],
-  "description": "SSH Auth package",
+  "description": "Users SSH package",
   "main": "main.js",
   "moduleType": [
     "es6",

@@ -10,16 +10,16 @@ export default (app) => {
     app.emit(eventName, this);
   }
 
-  $('.deleteSetting').click(function(e) {
-    callListener.call(this, e, 'deleteSetting');
+  $('#addSSHKey').submit(function(e) {
+    callListener.call(this, e, 'addSSHKey');
   });
 
-  $('#createSetting').submit(function(e) {
-    callListener.call(this, e, 'createSetting');
-  });
+  $('#showAddSSHKeyForm').click(function(e) {
+    callListener.call(this, e, 'showAddSSHKeyForm');
+  })
 
-  $('#editSetting').submit(function(e) {
-    callListener.call(this, e, 'editSetting');
+  $('.deleteSSHKey').click(function(e) {
+    callListener.call(this, e, 'deleteSSHKey');
   });
 
   return app;

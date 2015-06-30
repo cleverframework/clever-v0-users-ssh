@@ -1,15 +1,16 @@
 {
-  "name": "ssh-auth",
+  "name": "users-ssh",
   "version": "0.0.1",
-  "description": "SSH Auth package",
+  "description": "Users SSH package",
   "author": {
     "name": "Jacopo Daeli <jacopo.daeli@gmail.com>"
   },
   "clever": "0.0.x",
-  "dependencies": {},
-  "license": "MIT",
+  "visible": false,
   "dependencies": {
+    "rsa-bearer-auth": "0.0.3",
+    "ssh-fingerprint": "0.0.1"
   },
-  "devDependencies": {
-  }
+  "devDependencies": {},
+  "license": "MIT"
 }
